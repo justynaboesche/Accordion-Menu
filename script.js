@@ -15,4 +15,17 @@ const closeAccordionItems = () => {
 	allActiveItems.forEach(item => item.classList.remove('active'));
 };
 
+const clickOutsideAccordion = e => {
+	if (
+		e.target.classList.contains('accordion-btn') ||
+		e.target.classList.contains('accordion-info') ||
+		e.target.classList.contains('accordion-info-text')
+	)
+		return;
+
+	closeAccordionItems();
+};
+
 accordionBtns.forEach(btn => btn.addEventListener('click', openAccordionItems));
+
+window.addEventListener('click', clickOutsideAccordion);
